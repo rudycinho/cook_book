@@ -17,11 +17,13 @@ fetch(myRequest)
     var size = foods.length;
 
     var mainView = true;
-    var flagPreparacion = false;
-
+    var flagDirections = false;
+    var flagIngredients = false;
 
     var specificCard = document.querySelector('#specific-card');
     var viewCards = document.querySelector('#cards');
+
+    var synt = window.speechSynthesis;
 
     create_items(foods);
     updateItemsFocus(index);
@@ -39,7 +41,9 @@ fetch(myRequest)
                     updateItemsFocus(index)
                     console.log("anterior");
                 }
-                flagPreparacion = false;
+                flagDirections = false;
+                flagIngredients = false;
+
             },
             'receta siguiente' : function() { 
                 if(mainView){
@@ -47,7 +51,9 @@ fetch(myRequest)
                     updateItemsFocus(index);
                     console.log("siguiente");
                 }
-                flagPreparacion = false;
+                flagDirections = false;
+                flagIngredients = false;
+
             },
             'elegir' : function(){
                 if(mainView){
@@ -58,8 +64,11 @@ fetch(myRequest)
 
                     viewCards.style.display = "none";
                     specificCard.style.display = "block"; 
+                    //changeToForward();
                 }
-                flagPreparacion = false;
+                flagDirections = false;
+                flagIngredients = false;
+
             },
             'atras' : function(){
                 if(!mainView){
@@ -67,30 +76,35 @@ fetch(myRequest)
                     viewCards.style.display = "block";
                     specificCard.style.display = "none"; 
                 }
-                flagPreparacion = false;
+                flagDirections = false;
+                flagIngredients = false;
+
             },
             'ingredientes' : function(){
                 if(!mainView){
                     document.querySelector('#ingredients').scrollIntoView(); 
                 }
-                flagPreparacion = false;
+                flagDirections = false;
+                flagIngredients = true;
             },
             'preparacion' : function(){
                 if(!mainView){
                     document.querySelector('#directions').scrollIntoView(); 
-                    flagPreparacion = true;
+                    flagDirections = true;
+                    flagIngredients = false;
                 }
             },
-            'paso 1' : () => {if(!mainView && flagPreparacion) readStep('#dir1')},
-            'paso 2' : () => {if(!mainView && flagPreparacion) readStep('#dir2')},
-            'paso 3' : () => {if(!mainView && flagPreparacion) readStep('#dir3')},
-            'paso 4' : () => {if(!mainView && flagPreparacion) readStep('#dir4')},
-            'paso 5' : () => {if(!mainView && flagPreparacion) readStep('#dir5')},
-            'paso 6' : () => {if(!mainView && flagPreparacion) readStep('#dir6')},
-            'paso 7' : () => {if(!mainView && flagPreparacion) readStep('#dir7')},
-            'paso 8' : () => {if(!mainView && flagPreparacion) readStep('#dir8')},
-            'paso 9' : () => {if(!mainView && flagPreparacion) readStep('#dir9')},
-            'paso 10' : () => {if(!mainView && flagPreparacion) readStep('#dir10')},
+            'paso 1' : () => {if(!mainView && flagDirections) readStep('#dir1',synt)},
+            'paso 2' : () => {if(!mainView && flagDirections) readStep('#dir2',synt)},
+            'paso 3' : () => {if(!mainView && flagDirections) readStep('#dir3',synt)},
+            'paso 4' : () => {if(!mainView && flagDirections) readStep('#dir4',synt)},
+            'paso 5' : () => {if(!mainView && flagDirections) readStep('#dir5',synt)},
+            'paso 6' : () => {if(!mainView && flagDirections) readStep('#dir6',synt)},
+            'paso 7' : () => {if(!mainView && flagDirections) readStep('#dir7',synt)},
+            'paso 8' : () => {if(!mainView && flagDirections) readStep('#dir8',synt)},
+            'paso 9' : () => {if(!mainView && flagDirections) readStep('#dir9',synt)},
+            'paso 10' : () => {if(!mainView && flagDirections) readStep('#dir10',synt)},
+            'leer ingredientes' : () => {if(!mainView && flagIngredients) readIngredients(foods,index,synt)},
             
         };
     
@@ -118,7 +132,7 @@ function create_items(foods){
                 <div class="card-body">
                     <h5 class="card-title">${food.title}</h5>
                     <p class="card-text">${food.description}</p>
-                    <a href="#" class="btn btn-primary">Ir a la receta</a>
+                    <!--<a href="#" class="btn btn-primary" onclick="">Ir a la receta</a>-->
                 </div>
             </div>
                 
@@ -197,17 +211,24 @@ function clearView(specificCard){
     }
 }
 
-function readStep(id){
+function readStep(id,synt){
     let dir = document.querySelector(id);
-    if(dir !== undefined || dir !== null ){
+    if(dir !== undefined && dir !== null ){
         dir.scrollIntoView(); 
         let text = dir.lastElementChild.innerText;
         
-        var msg = new SpeechSynthesisUtterance(text);
-        var voices = window.speechSynthesis.getVoices();
-        //console.log(window.SpeechSynthesis);
-        //console.log(msg.voice);
+        let msg = new SpeechSynthesisUtterance(text);
         msg.lang = 'es-US'
-        window.speechSynthesis.speak(msg);
+        synt.speak(msg);
     }
+}
+
+function readIngredients(foods,index,synt){
+    let ingredientsText = foods[index].ingredients;
+    let msg;
+    ingredientsText.forEach(ingredient => {
+        msg = new SpeechSynthesisUtterance(ingredient);
+        msg.lang = 'es-US';
+        synt.speak(msg);
+    });
 }
