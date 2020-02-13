@@ -6,6 +6,7 @@
             "time":40,
             "description" : "Pique macho o pique a lo macho es un plato típico de Bolivia. Es un plato consistente en trozos de carne de vaca y patatas fritas. También se le añade cebolla, locoto, huevos duros, mostaza, mayonesa y kétchup.",
             "srcImagen" : "assets/piquemacho-boliviano-foto-principal.jpg",
+            "category" : "segundo",
             "ingredients": [
                 "1/2 kg carne entera",
                 "1/4 kg choricillo",
@@ -32,6 +33,7 @@
             "time":"30 minutos",
             "description" : "La papa a la huancaína es un plato típico de la costa y sierra central del Perú que, junto al ceviche, es uno de los productos gastronómicos más populares y representativos de este país.",
             "srcImagen" : "assets/papas-ala-huancaina-bolivia-foto-principal.jpg",
+            "category" : "segundo",
             "ingredients": [
                 "8 Papas blancas cocidas",
                 "1 puñado mani pelado",
@@ -58,6 +60,7 @@
             "time":"Variado",
             "description" : "Es una sopa muy deliciosa e ideal cuando hace frío o si uno no se siente muy bien de salud ya que es una “sopita blanca” .",
             "srcImagen" : "assets/chanka-de-pollo-foto-principal.jpg",
+            "category" : "sopa",
             "ingredients": [
                 "1 pechuga de pollo",
                 "1 taza habas",
@@ -73,6 +76,136 @@
                 "Pelar y picar la zanahoria en bastones largos. Pelar las habas. Incorporar a la olla. Otra opción es hacer cocer a parte.",
                 "Lavar bien el cebollín (hojas verdes y largas de la cabeza de la cebolla) y cortar en tiras largas. Hacer hervir en una olla aparte por unos minutos y apartar para el momento de servir. (Este ingrediente es opcional en la sopa)"
             ]    
+        },
+        {
+            "title" : "Fricasé boliviano",
+            "portions" : 8,
+            "time": "50 minutos",
+            "description" : "Fricasé boliviano es un plato de carne de cerdo picado con cebolla, ajo y ají amarillo, se sirve con chuño o mote.Con un poco del accidente les traigo este platos bueno para mi gusto.",
+            "srcImagen" : "assets/fricase-boliviano.jpg",
+            "category" : "sopa",
+            "ingredients": [
+                "espalda de cerdo c/n",
+                "200 gr aji amarillo",
+                "ajos c/n",
+                "1/2 cdts comino",
+                "1 cdts pimienta",
+                "1 libra chuño",
+                "1 libra mote cocido",
+                "4 cebollas",
+                "agua c/n",
+                "sal"
+            ],
+            "directions": [
+                "Picar en brunoise las cebollas, triturar el ajo y sofreir junto con el aji amarillo; colocar en una olla con el chancho picado considerablemente.",
+                "Agregar el agua dejar cocer hasta que este cocido, salpimentarlo y ya esta servir con chuño y mote previamente codido."
+            ] 
+        },
+        {
+            "title" : " Sopita de maní ",
+            "portions" : 6,
+            "time": "40 minutos",
+            "description" : "Es una receta muy familiar.",
+            "srcImagen" : "assets/sopita-de-mani-foto-principal.jpg",
+            "category" : "sopa",
+            "ingredients": [
+                "Costilla de res",
+                "1 cebolla",
+                "3 dientes ajo",
+                "2 nabos",
+                "al gusto Zapallo, apio, zanahorias",
+                "al gusto Papas peladas y picadas al hilo y freírlas",
+                "al gusto Sal, comino, pimienta negra",
+                "200 grms arroz o fideo macarron",
+                "Perejil fresco picado",
+                "200 grms maní blanco licuado" 
+            ],
+            "directions": [
+                "Primero sofreír las costillas con un poco de aceite, salpimentar un poco dándoles la vuelta, raspar el nabo, las zanahorias y el zapallo, picar el apio, picar finamente la cebolla junto con el ajo sofreír con poco aceite.",
+                "Hervir el agua en una cacerola de sopa, poner las costillas a hervir por una media hora o hasta que la costilla suavice, incorporar el maní licuado la cebolla sofrita y toda la verdura raspada hirviendo a fuego lento al principio para que no rebase, condimentar a gusto, para el final agregar el arroz o los macarrones de acuerdo a su elección un poco de orégano.",
+                "Tener listas las papitas fritas al hilo, servir caliente con un pedazo de costilla, las papas por encima y ponerle el perejil y listo una rica",
+                "Sopa de maní !!"
+
+            ] 
+        },
+        {
+            "title" : "Arroz a la Valenciana",
+            "portions" : 2,
+            "time": "Variado",
+            "description" : "",
+            "srcImagen" : "assets/arroz-a-la-valenciana-foto-principal.jpg",
+            "category" : "segundo",
+            "ingredients": [
+                "1 taza arroz",
+                "1 pechuga de pollo",
+                "1/2 pimentón",
+                "2 zanahorias pequeñas",
+                "1 majo de vainitas",
+                "Plátano de freír",
+                "Huevo"
+            ],
+            "directions": [
+                "Hacer cocer el arroz en una olla con 3 tazas de agua y una cucharada de sal",
+                "Paralelamente hacer cocer el pollo en una olla con agua y sal por 30min",
+                "Picar las verduras en cuadraditos prqueños",
+                "Picar el pollo y añadir a la olla de arroz",
+                "Faltando 10 min para finalizar la cocción del arroz añadir las verduras",
+                "Cortar el plátano de freír en lonjas largas y hacer ferir en una sartén con aceite",
+                "Para servir decorar el plato con los plátanos y huevo fritos",
+                "Disfrutar de un plato saludable y delicioso!"
+            ] 
+        },
+        {
+            "title" : "Silpancho Cochabambino",
+            "portions" : 5,
+            "time": "45 minutos",
+            "description" : "Una receta sencilla, algo morosa debido a la preparación separada de los ingredientes, muy tradicional en mi llajta.",
+            "srcImagen" : "assets/silpancho.jpg",
+            "category" : "sopa",
+            "ingredients": [
+                "1 1/2 tazas arroz grano de oro",
+                "1/2 kilo carne blanda",
+                "5 huevos (10 si son pequeños)",
+                "8 papas con cáscara previamente lavadas",
+                "2 cebollas medianas",
+                "2 tomates grandes",
+                "3 locotos verdes (rocotos, ajíes)",
+                "(pan molido, sal, comino molido, pimienta molida, aceite) lo necesario" 
+            ],
+            "directions": [
+                "Filetear la carne en 5 porciones, salar cada una de las porciones y pasar por encima de ambos lados del filete una pizca de pimienta y comino.",
+                "Con un mazo o un moroco apanar cada porción, machucar hasta conseguir un tamaño adecuado al plato en el que se va a servir.",
+                "Hacer cocer en agua las papas (previamente lavadas) con su cáscara, posteriormente pelarlas y con ayuda de un cuchillo dividir cada papa en 3 partes de manera horizontal.",
+                "Mientras se frien los demás ingredientes; granear el arroz, preferentemente hacerlo cocer abrillantado, si no se gusta, granearlo de manera normal.",
+                "En un sartén te tamaño regular, calentar aceite en abundancia, freír las carnes en una temperatura constante, voltear de rato, en rato, no pasar el tiempo de cocción, puesto que podrian endurar el contorno.",
+                "Paralelamente freír igual en abundante aceite las papas hasta que doren de ambos lados, y tomen una consistencia crocante.",
+                "Al concluir o si se puede paralela a la cocción de las papas y de la carne, freír los huevos, de manera estrellada pero sin reventar la yema, esto es muy importante al momento de servir los huevos deben de estar con la yema intacta.",
+                "Ensalada; la cebolla debe de estar picada finamente en cuadraditos menudos, lavar de varias aguas y resguardar en un bol, así mismo el tomate y el locoto deben de estar picados en cuadraditos no tan finos para que no pierdan consistencia al momento de servir; resguardar de manera separada en un bol.",
+                "Para finalizar se debe servir en el siguiente orden: en un plato mediano servir una buena Porción de arroz graneado, a un costado o si se prefiere al centro acomodar cinco papitas, encima acomodar el apanado mejor si cubre los otros ingredientes, encima del apanado poner con cuidado de no reventar la yema uno o dos huevos, así mismo decorar con la ensalada de forma separada como se ve en la foto y degustar de un plato tradicional sin la necesidad de ingredientes costosos o dificiles de encontrar."
+            ] 
+        },
+        {
+            "title" : " Cuñapes",
+            "portions" : 5,
+            "time": "45 minutos",
+            "description" : "",
+            "srcImagen" : "assets/cunape.jpg",
+            "category" : "postre",
+            "ingredients": [                
+                "400 g almidón de yuca",
+                "3 quesillos",
+                "1 huevo",
+                "1/4 cdita sal" 
+            ],
+            "directions": [
+                "Deshacer los quesillos con ayuda de un tenedor (puedes utilizar otro queso de tu preferencia y lo rallas)",
+                "Mezclar el almidón de yuca con el quesillo o queso rallado, si la masa está muy seca añadir un huevo",
+                "Añadir sal de ser necesario (el queso ya le proporciona sal a la mezcla) Mezclar hasta obtener una masa compacta.",
+                "Formar bolitas medianas y hacer un agujero en la parte inferior de la bolita con ayuda del dedo meñique",
+                "En una bandeja enharinada colocar las bolitas de manera separada, pues durante la cocción crecen y se expanden",
+                "Colocar al horno previamente calentado (150C) Dejar cocer por 20 minutos.",
+                "Disfruta de unos deliciosos cuñapes bolivianos"
+            ] 
         }
     ]
 }
