@@ -16,6 +16,8 @@ fetch(myRequest)
     var index=0;
     var size = foods.length;
 
+    var foodArray = foods.map(() => true);
+
     var mainView = true;
     var flagDirections = false;
     var flagIngredients = false;
@@ -35,10 +37,79 @@ fetch(myRequest)
         annyang.setLanguage('es-US');
 
         var commands = {
+            'sopas': function() { 
+                if(mainView){
+                    Array.from(viewCards.children).forEach(c =>  c.style.display = "none" );
+                    Array.from(document.querySelectorAll(".sopa")).forEach(c => c.style.display = "block");
+
+                    let arr = Array.from(document.querySelectorAll(".sopa")).map(c => `${c.id}`.replace('code',''));
+                    console.log(arr);
+                    index = Math.min(...arr); 
+                    updateItemsFocus(index);
+
+                    foodArray.fill(false);
+                    arr.forEach(e => foodArray[parseInt(e)]=true);
+                    console.log(foodArray);
+                }
+                flagDirections = false;
+                flagIngredients = false;
+
+            },
+            'segundos': function() { 
+                if(mainView){
+                    Array.from(viewCards.children).forEach(c =>  c.style.display = "none" );
+                    Array.from(document.querySelectorAll(".segundo")).forEach(c => c.style.display = "block");
+
+                    let arr = Array.from(document.querySelectorAll(".segundo")).map(c => `${c.id}`.replace('code',''));
+                    console.log(arr);
+                    index = Math.min(...arr);
+                    updateItemsFocus(index);
+
+                    foodArray.fill(false);
+                    arr.forEach(e => foodArray[parseInt(e)]=true);
+                    console.log(foodArray);
+                }
+                flagDirections = false;
+                flagIngredients = false;
+
+            },
+            'postres': function() { 
+                if(mainView){
+                    Array.from(viewCards.children).forEach(c =>  c.style.display = "none" );
+                    Array.from(document.querySelectorAll(".postre")).forEach(c => c.style.display = "block");
+
+                    let arr = Array.from(document.querySelectorAll(".postre")).map(c => `${c.id}`.replace('code',''));
+                    console.log(arr);
+                    index = Math.min(...arr);
+                    updateItemsFocus(index);
+
+                    foodArray.fill(false);
+                    arr.forEach(e => foodArray[parseInt(e)]=true);
+                    console.log(foodArray);
+                }
+                flagDirections = false;
+                flagIngredients = false;
+
+            },
+            'todos': function() { 
+                if(mainView){
+                    Array.from(viewCards.children).forEach(c =>  c.style.display = "block" );
+                    index = 0
+                    updateItemsFocus(index);
+
+                    foodArray.fill(true);
+                    console.log(foodArray);
+                }
+                flagDirections = false;
+                flagIngredients = false;
+
+            },
             'receta anterior': function() { 
                 if(mainView){
-                    index = (index-1+size)%size; 
-                    updateItemsFocus(index)
+                    //index = (index-1+size)%size; 
+                    index = back(index,size,foodArray);
+                    console.log(index);
+                    updateItemsFocus(index);
                     console.log("anterior");
                 }
                 flagDirections = false;
@@ -47,7 +118,9 @@ fetch(myRequest)
             },
             'receta siguiente' : function() { 
                 if(mainView){
-                    index = (index+1)%size;
+                    //index = (index+1)%size;
+                    index = fordward(index,size,foodArray);
+                    console.log(index);
                     updateItemsFocus(index);
                     console.log("siguiente");
                 }
@@ -125,7 +198,7 @@ function create_items(foods){
     foods.forEach((food,index) => {
         let c = document.createElement("div");
 
-        c.innerHTML = `<div class="card" id="code${index}">
+        c.innerHTML = `<div class="card ${food.category}" id="code${index}">
         <h5 class="card-header list-group-item list-group-item-action flex-column align-items-start">${food.title}</h5>
         <div class="row">
             <div class="col-sm-8">
@@ -231,4 +304,28 @@ function readIngredients(foods,index,synt){
         msg.lang = 'es-US';
         synt.speak(msg);
     });
+}
+
+function fordward(index,size,foodArray){
+    let i = index;
+    console.log(`-> ${i}`)
+    do{
+        i = (i+1)%size;
+        console.log(`> ${i}`)
+        if(foodArray[i])
+            break;
+    }while(i!==index);
+
+    return i;
+}
+
+function back(index,size,foodArray){
+    let i = index;
+    do{
+        i = (i-1+size)%size;
+        if(foodArray[i])
+            break;
+    }while(i!==index);
+
+    return i;
 }
