@@ -1,11 +1,11 @@
 {
-    "foods" : [
+    "ddbb": [
         {
             "title" : "Pique Macho",
             "portions" : 2,
             "time":40,
             "description" : "Pique macho o pique a lo macho es un plato típico de Bolivia. Es un plato consistente en trozos de carne de vaca y patatas fritas. También se le añade cebolla, locoto, huevos duros, mostaza, mayonesa y kétchup.",
-            "srcImagen" : "piquemacho-boliviano-foto-principal.jpg",
+            "srcImagen" : "assets/piquemacho-boliviano-foto-principal.jpg",
             "ingredients": [
                 "1/2 kg carne entera",
                 "1/4 kg choricillo",
@@ -31,7 +31,7 @@
             "portions" : 4,
             "time":"30 minutos",
             "description" : "La papa a la huancaína es un plato típico de la costa y sierra central del Perú que, junto al ceviche, es uno de los productos gastronómicos más populares y representativos de este país.",
-            "srcImagen" : "papas-ala-huancaina-bolivia-foto-principal.jpg",
+            "srcImagen" : "assets/papas-ala-huancaina-bolivia-foto-principal.jpg",
             "ingredients": [
                 "8 Papas blancas cocidas",
                 "1 puñado mani pelado",
@@ -57,7 +57,7 @@
             "portions" : 4,
             "time":"Variado",
             "description" : "Es una sopa muy deliciosa e ideal cuando hace frío o si uno no se siente muy bien de salud ya que es una “sopita blanca” .",
-            "srcImagen" : "chanka-de-pollo-foto-principal.jpg",
+            "srcImagen" : "assets/chanka-de-pollo-foto-principal.jpg",
             "ingredients": [
                 "1 pechuga de pollo",
                 "1 taza habas",
