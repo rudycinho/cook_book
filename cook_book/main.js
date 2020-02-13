@@ -15,7 +15,14 @@ fetch(myRequest)
 .then((foods)=> {
     var index=0;
     var size = foods.length;
-    
+
+    var mainView = true;
+    var flagPreparacion = false;
+
+
+    var specificCard = document.querySelector('#specific-card');
+    var viewCards = document.querySelector('#cards');
+
     create_items(foods);
     updateItemsFocus(index);
 
@@ -26,18 +33,65 @@ fetch(myRequest)
         annyang.setLanguage('es-US');
 
         var commands = {
-            'anterior': function() { 
-                index = (index-1+size)%size; 
-                updateItemsFocus(index)
+            'receta anterior': function() { 
+                if(mainView){
+                    index = (index-1+size)%size; 
+                    updateItemsFocus(index)
+                    console.log("anterior");
+                }
+                flagPreparacion = false;
             },
-            'siguiente' : function() { 
-                index = (index+1)%size;
-                updateItemsFocus(index)
+            'receta siguiente' : function() { 
+                if(mainView){
+                    index = (index+1)%size;
+                    updateItemsFocus(index);
+                    console.log("siguiente");
+                }
+                flagPreparacion = false;
             },
-            'entrar' : function(){
-                console.log(index);
-                location.href = 'https://www.youtube.com/watch?v=fT0BDZWj6Xk&list=RDHBnMQFabTP4&index=19';
-            }
+            'elegir' : function(){
+                if(mainView){
+                    
+                    clearView(specificCard);
+                    viewItem(foods[index],specificCard);
+                    mainView = false;
+
+                    viewCards.style.display = "none";
+                    specificCard.style.display = "block"; 
+                }
+                flagPreparacion = false;
+            },
+            'atras' : function(){
+                if(!mainView){
+                    mainView=true;
+                    viewCards.style.display = "block";
+                    specificCard.style.display = "none"; 
+                }
+                flagPreparacion = false;
+            },
+            'ingredientes' : function(){
+                if(!mainView){
+                    document.querySelector('#ingredients').scrollIntoView(); 
+                }
+                flagPreparacion = false;
+            },
+            'preparacion' : function(){
+                if(!mainView){
+                    document.querySelector('#directions').scrollIntoView(); 
+                    flagPreparacion = true;
+                }
+            },
+            'paso 1' : () => {if(!mainView && flagPreparacion) readStep('#dir1')},
+            'paso 2' : () => {if(!mainView && flagPreparacion) readStep('#dir2')},
+            'paso 3' : () => {if(!mainView && flagPreparacion) readStep('#dir3')},
+            'paso 4' : () => {if(!mainView && flagPreparacion) readStep('#dir4')},
+            'paso 5' : () => {if(!mainView && flagPreparacion) readStep('#dir5')},
+            'paso 6' : () => {if(!mainView && flagPreparacion) readStep('#dir6')},
+            'paso 7' : () => {if(!mainView && flagPreparacion) readStep('#dir7')},
+            'paso 8' : () => {if(!mainView && flagPreparacion) readStep('#dir8')},
+            'paso 9' : () => {if(!mainView && flagPreparacion) readStep('#dir9')},
+            'paso 10' : () => {if(!mainView && flagPreparacion) readStep('#dir10')},
+            
         };
     
         // Add our commands to annyang
@@ -87,7 +141,6 @@ function updateItemsFocus(index){
 }
 
 function checkItem(id){
-    console.log(id);
     let items = document.querySelectorAll(".card");
     let item  = document.querySelector(id);
     uncheckItems(items);
@@ -103,33 +156,33 @@ function uncheckItems(items){
     Array.from(items).forEach(item => {item.style.border = "0px solid #0000FF"});
 }
 
-/*
-function draw_item(){
+// CONSTRUCT ITEM SPECIFIC
+
+function viewItem(food,especificCard){
     let v = document.createElement("div");
 
     v.innerHTML = `<div>
     <h2>
-        ${foods[i].title}
+        ${food.title}
     </h2>
-    <h3>Ingrediente</h3>
+
+    <div class="col-sm-12">
+        <img src="${food.srcImagen}">
+    </div>
+    <h3 id="ingredients">Ingredientes</h3>
 
     <ul class="list-group">
-        ${foods[i].ingredients.map((ingredient)=> `<li class="list-group-item">${ingredient}</li>`).join(' ')}
-        
-                    
+        ${food.ingredients.map((ingredient)=> `<li class="list-group-item">${ingredient}</li>`).join(' ')}
     </ul>
 
-    <h3>Preparacion</h3>
+    <h3 id="directions">Preparacion</h3>
 
     <ul class="list-group">
-        ${foods[i].directions.map((directions,index)=> `
-        <li href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        ${food.directions.map((directions,index)=> `
+        <li href="#" class="list-group-item list-group-item-action flex-column align-items-start" id="dir${index+1}">
         <small>${index+1}.</small>
         <p class="mb-1">${directions}</p>
-        
         </li>`).join(' ')}
-        
-
     </ul>
     </div>`;
 
@@ -137,32 +190,24 @@ function draw_item(){
 
     especificCard.appendChild(view);
 }
-*/
-function view_item(food,especificCard){
-    let v = document.createElement("div");
 
-    v.innerHTML = `<div>
-    <h2>
-        ${food.title}
-    </h2>
-    <h3>Ingrediente</h3>
+function clearView(specificCard){
+    while (specificCard.firstChild) {
+        specificCard.firstChild.remove();
+    }
+}
 
-    <ul class="list-group">
-        ${food.ingredients.map((ingredient)=> `<li class="list-group-item">${ingredient}</li>`).join(' ')}
-    </ul>
-
-    <h3>Preparacion</h3>
-
-    <ul class="list-group">
-        ${food.directions.map((directions,index)=> `
-        <li href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <small>${index+1}.</small>
-        <p class="mb-1">${directions}</p>
-        </li>`).join(' ')}
-    </ul>
-    </div>`;
-
-    let view = v.childNodes[0];
-
-    especificCard.appendChild(view);
+function readStep(id){
+    let dir = document.querySelector(id);
+    if(dir !== undefined || dir !== null ){
+        dir.scrollIntoView(); 
+        let text = dir.lastElementChild.innerText;
+        
+        var msg = new SpeechSynthesisUtterance(text);
+        var voices = window.speechSynthesis.getVoices();
+        //console.log(window.SpeechSynthesis);
+        //console.log(msg.voice);
+        msg.lang = 'es-US'
+        window.speechSynthesis.speak(msg);
+    }
 }
