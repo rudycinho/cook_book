@@ -147,9 +147,21 @@ fetch(myRequest)
                     specificCard.style.display = "block"; 
                     //changeToForward();
                     document.querySelector(".text").scrollIntoView();
+
+                    document.querySelector("#cmd-siguiente").style.display = "none"; 
+                    document.querySelector("#cmd-anterior").style.display = "none"; 
+                    document.querySelector("#cmd-elegir").style.display = "none"; 
+                    document.querySelector("#cmd-atras").style.display = "block"; 
+
+                    Array.from(document.querySelectorAll(".cmd-categoria")).forEach(e => e.style.display="none");
+                    Array.from(document.querySelectorAll(".view-2")).forEach(e => e.style.display="block");
+                    //Array.from(document.querySelectorAll(".view-3")).forEach(e => e.style.display="block");
+                    //Array.from(document.querySelectorAll(".view-4")).forEach(e => e.style.display="block");
                 }
                 flagDirections = false;
                 flagIngredients = false;
+
+                
 
             },
             'atras' : function(){
@@ -158,6 +170,15 @@ fetch(myRequest)
                     viewCards.style.display = "block";
                     specificCard.style.display = "none"; 
                     //updateItemsFocus(index);
+                    document.querySelector("#cmd-siguiente").style.display = "block"; 
+                    document.querySelector("#cmd-anterior").style.display = "block"; 
+                    document.querySelector("#cmd-elegir").style.display = "block"; 
+                    document.querySelector("#cmd-atras").style.display = "none"; 
+
+                    Array.from(document.querySelectorAll(".cmd-categoria")).forEach(e => e.style.display="block");
+                    Array.from(document.querySelectorAll(".view-2")).forEach(e => e.style.display="none");
+                    Array.from(document.querySelectorAll(".view-3")).forEach(e => e.style.display="none");
+                    Array.from(document.querySelectorAll(".view-4")).forEach(e => e.style.display="none");
 
                 }
                 flagDirections = false;
@@ -168,6 +189,9 @@ fetch(myRequest)
             'ingredientes' : function(){
                 if(!mainView){
                     document.querySelector('#ingredients').scrollIntoView(); 
+                    Array.from(document.querySelectorAll(".view-3")).forEach(e => e.style.display="block");
+                    Array.from(document.querySelectorAll(".view-4")).forEach(e => e.style.display="none");
+
                 }
                 flagDirections = false;
                 flagIngredients = true;
@@ -178,6 +202,9 @@ fetch(myRequest)
                     flagDirections = true;
                     flagIngredients = false;
                 }
+                Array.from(document.querySelectorAll(".view-3")).forEach(e => e.style.display="none");
+                Array.from(document.querySelectorAll(".view-4")).forEach(e => e.style.display="block");
+
             },
             'paso 1' : () => {if(!mainView && flagDirections) readStep('#dir1',synt)},
             'paso 2' : () => {if(!mainView && flagDirections) readStep('#dir2',synt)},
@@ -313,6 +340,7 @@ function readStep(id,synt){
         msg.lang = 'es-US'
         synt.speak(msg);
     }
+    Array.from(document.querySelectorAll(".view-3")).forEach(e => e.style.display="none");
 }
 
 function readIngredients(foods,index,synt){
@@ -323,6 +351,8 @@ function readIngredients(foods,index,synt){
         msg.lang = 'es-US';
         synt.speak(msg);
     });
+    Array.from(document.querySelectorAll(".view-4")).forEach(e => e.style.display="none");
+
 }
 
 function fordward(index,size,foodArray){
