@@ -206,6 +206,12 @@ fetch(myRequest)
                 Array.from(document.querySelectorAll(".view-4")).forEach(e => e.style.display="block");
 
             },
+            'ayuda' :  () => {
+                let msg = new SpeechSynthesisUtterance("En la seccion izquierda estan los comandos disponibles, separados en areas, basta con dictarlos al sistema");
+                msg.lang = 'es-US'
+                synt.speak(msg);
+                //console(msg);
+            },
             'paso 1' : () => {if(!mainView && flagDirections) readStep('#dir1',synt)},
             'paso 2' : () => {if(!mainView && flagDirections) readStep('#dir2',synt)},
             'paso 3' : () => {if(!mainView && flagDirections) readStep('#dir3',synt)},

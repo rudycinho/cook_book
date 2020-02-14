@@ -28,8 +28,8 @@
             text-align:center;
             border:1px solid black; 
             background-size: cover;
-            
-        }
+            /*position: fixed;*/            
+        }   
         .sidebar{
             position: fixed;
         }
@@ -43,6 +43,30 @@
         .view-4{
             display: none;
         }
+
+        /* width */
+::-webkit-scrollbar {
+  width: 40px;
+}
+
+/* Track */
+/*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}*/
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+  border-color: #000000;
+  border-style: solid;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white; 
+}
         </style> 
 </head>
 <body>
@@ -51,7 +75,7 @@
         <h1 class="text">RECETARIO GRUPITO</h1>
     </div>
     
-    <div class="row wallpaper">
+    <div class="row wallpaper sidebar">
         
 
         <div class="col-sm-3">
@@ -64,6 +88,10 @@
                             <h5 class="card-header">COMANDOS DISPONIBLES</h5>
                             <div class="card-body">
                                 <div>
+                                    <p>Dicte cualquiera de los siguientes comandos</p>
+                                    <h5 style="text-decoration: underline; font-weight: bold;">AYUDA</h5>
+                                    <p>AYUDA</p>
+
                                     <h5 style="text-decoration: underline; font-weight: bold;">NAVEGACION</h5>
                                     
                                     <p id="cmd-siguiente">RECETA SIGUIENTE</p>
@@ -102,7 +130,7 @@
             </div>
         </div>
         
-        <div class="col-sm-8 row">
+        <div class="col-sm-8 row" style="overflow-y: scroll; max-height: 100vh;">
             <div class="col-sm-12" id="cards"></div>
             
             <div class="col-sm-12" id="specific-card">
