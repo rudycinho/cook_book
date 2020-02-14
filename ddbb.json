@@ -3,7 +3,7 @@
         {
             "title" : "Pique Macho",
             "portions" : 2,
-            "time":40,
+            "time": "40 minutos",
             "description" : "Pique macho o pique a lo macho es un plato típico de Bolivia. Es un plato consistente en trozos de carne de vaca y patatas fritas. También se le añade cebolla, locoto, huevos duros, mostaza, mayonesa y kétchup.",
             "srcImagen" : "assets/piquemacho-boliviano-foto-principal.jpg",
             "category" : "segundo",

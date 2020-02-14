@@ -28,7 +28,7 @@ fetch(myRequest)
     var synt = window.speechSynthesis;
 
     create_items(foods);
-    updateItemsFocus(index);
+    updateItemsFocus(index,false);
 
 
     if (annyang) {
@@ -50,6 +50,8 @@ fetch(myRequest)
                     foodArray.fill(false);
                     arr.forEach(e => foodArray[parseInt(e)]=true);
                     console.log(foodArray);
+
+                    Array.from(document.querySelectorAll(".sopa-aux")).forEach(c => c.style.display = "block");
                 }
                 flagDirections = false;
                 flagIngredients = false;
@@ -68,6 +70,9 @@ fetch(myRequest)
                     foodArray.fill(false);
                     arr.forEach(e => foodArray[parseInt(e)]=true);
                     console.log(foodArray);
+
+                    Array.from(document.querySelectorAll(".segundo-aux")).forEach(c => c.style.display = "block");
+
                 }
                 flagDirections = false;
                 flagIngredients = false;
@@ -86,6 +91,9 @@ fetch(myRequest)
                     foodArray.fill(false);
                     arr.forEach(e => foodArray[parseInt(e)]=true);
                     console.log(foodArray);
+
+                    Array.from(document.querySelectorAll(".postre-aux")).forEach(c => c.style.display = "block");
+
                 }
                 flagDirections = false;
                 flagIngredients = false;
@@ -138,6 +146,7 @@ fetch(myRequest)
                     viewCards.style.display = "none";
                     specificCard.style.display = "block"; 
                     //changeToForward();
+                    document.querySelector(".text").scrollIntoView();
                 }
                 flagDirections = false;
                 flagIngredients = false;
@@ -148,9 +157,12 @@ fetch(myRequest)
                     mainView=true;
                     viewCards.style.display = "block";
                     specificCard.style.display = "none"; 
+                    //updateItemsFocus(index);
+
                 }
                 flagDirections = false;
                 flagIngredients = false;
+                
 
             },
             'ingredientes' : function(){
@@ -203,9 +215,10 @@ function create_items(foods){
         <div class="row">
             <div class="col-sm-8">
                 <div class="card-body">
-                    <h5 class="card-title">${food.title}</h5>
                     <p class="card-text">${food.description}</p>
                     <!--<a href="#" class="btn btn-primary" onclick="">Ir a la receta</a>-->
+                    <p class="card-text"><small class="text-muted">${food.time}</small></p>
+                    <p class="card-text"><small class="text-muted">${food.portions} personas </small></p>
                 </div>
             </div>
                 
@@ -213,30 +226,36 @@ function create_items(foods){
                 <img class="card-img-top" src=${food.srcImagen} width="200px" alt="Card image cap">
             </div>
         </div>            
-    </div>`
-
+    </div>
+    `
         let card = c.childNodes[0];
-
         cards.appendChild(card);
+        
+        //cards.appendChild(document.createElement('hr'));
+
+        let hr = document.createElement('hr');
+        hr.classList.add(`${food.category}-aux`);
+        cards.appendChild(hr);
     });
 }
 
 // CHECK ITEM
 
-function updateItemsFocus(index){
-    checkItem(`#code${index}`);
+function updateItemsFocus(index,op=true){
+    checkItem(`#code${index}`,op);
 }
 
-function checkItem(id){
+function checkItem(id,op){
     let items = document.querySelectorAll(".card");
     let item  = document.querySelector(id);
     uncheckItems(items);
-    checkItemSpecific(item);
+    checkItemSpecific(item,op);
 }
 
-function checkItemSpecific(item){
+function checkItemSpecific(item,op){
     item.style.border = "thick solid #0000FF";
-    item.scrollIntoView(); 
+    if(op)
+        item.scrollIntoView(); 
 }
 
 function uncheckItems(items){
@@ -249,20 +268,20 @@ function viewItem(food,especificCard){
     let v = document.createElement("div");
 
     v.innerHTML = `<div>
-    <h2>
+    <h2 class="text">
         ${food.title}
     </h2>
 
     <div class="col-sm-12">
-        <img src="${food.srcImagen}">
+        <img src="${food.srcImagen}" class="img-item">
     </div>
-    <h3 id="ingredients">Ingredientes</h3>
+    <h2 id="ingredients" class="text">Ingredientes</h2>
 
     <ul class="list-group">
         ${food.ingredients.map((ingredient)=> `<li class="list-group-item">${ingredient}</li>`).join(' ')}
     </ul>
 
-    <h3 id="directions">Preparacion</h3>
+    <h2 id="directions" class="text">Preparacion</h2>
 
     <ul class="list-group">
         ${food.directions.map((directions,index)=> `
